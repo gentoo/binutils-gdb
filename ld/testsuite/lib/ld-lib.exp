@@ -147,7 +147,7 @@ proc default_ld_relocate { ld target objects } {
     global HOSTING_EMU
 
     remote_file host delete $target
-    return [run_host_cmd_yesno "$ld" "$HOSTING_EMU -o $target -r $objects"]
+    return [run_host_cmd_yesno "$ld" "$HOSTING_EMU --hash-style=sysv $flags -o $target $objs $libs"]
 }
 
 # Check to see if ld is being invoked with a non-endian output format
