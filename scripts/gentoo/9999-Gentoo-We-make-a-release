@@ -1,0 +1,12 @@
+Gentoo: We make a release, so switch development flag off
+
+--- a/bfd/development.sh
++++ b/bfd/development.sh
+@@ -16,5 +16,5 @@
+ # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
+ # Controls whether to enable development-mode features by default.
+-development=true
++development=false
+ 
+
