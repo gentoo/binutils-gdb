@@ -1,0 +1,22 @@
+From 0d715559a787bd90ecb0fd454eef728b7c76752d Mon Sep 17 00:00:00 2001
+From: "Andreas K. Huettel" <dilfridge@gentoo.org>
+Date: Thu, 12 Oct 2017 20:08:16 +0200
+Subject: [PATCH] Gentoo: We make a release, so switch development flag off
+
+---
+ bfd/development.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/bfd/development.sh b/bfd/development.sh
+index cd31410a8e..b001a888ea 100644
+--- a/bfd/development.sh
++++ b/bfd/development.sh
+@@ -16,4 +16,4 @@
+ # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
+ # Controls whether to enable development-mode features by default.
+-development=true
++development=false
+-- 
+2.13.6
+
