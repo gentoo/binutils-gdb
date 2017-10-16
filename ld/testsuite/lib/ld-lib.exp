@@ -960,6 +960,9 @@ proc run_dump_test { name {extra_options {}} } {
 	    set cmdret [lindex $cmdret 0]
 	}
 
+	# Gentoo tweak: We need to kill the textrel warnings here...
+	regsub -all -line "^(\[^\n\]*: warning: relocation\[^\n\]*\n\[^\n\]*: warning: creating a DT_TEXTREL in a shared object\.\n?)" $comp_output "" comp_output
+
 	regsub "\n$" $comp_output "" comp_output
 	if { $cmdret != 0 || $comp_output != "" || $check_ld(source) != "" } then {
 	    set exitstat "succeeded"
