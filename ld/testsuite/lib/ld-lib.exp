@@ -233,6 +233,8 @@ proc default_ld_link { ld target objects } {
     # Gentoo tweak:
     # We want to ignore TEXTREL warnings since we force enable them by default
     regsub -all "^lt-ld-new: warning: creating a DT_TEXTREL in object\." $exec_output "\\1" exec_output
+    regsub -all -line "^(\[^\n\]*: warning: relocation\[^\n\]*\n\[^\n\]*: warning: creating a DT_TEXTREL in a shared object\.\n?)" $exec_output "" exec_output
+
 
     return [string match "" $exec_output]
 }
