@@ -2340,7 +2340,6 @@ check-host:  \
     maybe-check-mpc \
     maybe-check-isl \
     maybe-check-libelf \
-    maybe-check-gold \
     maybe-check-gprof \
     maybe-check-intl \
     maybe-check-tcl \
