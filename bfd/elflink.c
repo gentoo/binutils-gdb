@@ -12934,7 +12934,7 @@ bfd_elf_final_link (bfd *abfd, struct bfd_link_info *info)
 	goto error_return;
 
       /* Check for DT_TEXTREL (late, in case the backend removes it).  */
-      if (((info->warn_shared_textrel && bfd_link_pic (info))
+      if ((info->warn_shared_textrel
 	   || info->error_textrel)
 	  && (o = bfd_get_linker_section (dynobj, ".dynamic")) != NULL)
 	{
@@ -12955,7 +12955,7 @@ bfd_elf_final_link (bfd *abfd, struct bfd_link_info *info)
 		      (_("%P%X: read-only segment has dynamic relocations\n"));
 		  else
 		    info->callbacks->einfo
-		      (_("%P: warning: creating a DT_TEXTREL in a shared object\n"));
+		      (_("%P: warning: creating a DT_TEXTREL in object\n"));
 		  break;
 		}
 	    }
