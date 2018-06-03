@@ -519,6 +519,9 @@ static const struct ld_option ld_options[] =
   { {"warn-shared-textrel", no_argument, NULL, OPTION_WARN_SHARED_TEXTREL},
     '\0', NULL, N_("Warn if shared object has DT_TEXTREL"),
     TWO_DASHES },
+  { {"no-warn-shared-textrel", no_argument, NULL, OPTION_NO_WARN_SHARED_TEXTREL},
+    '\0', NULL, N_("Do not warn if shared object has DT_TEXTREL"),
+    TWO_DASHES },
   { {"warn-alternate-em", no_argument, NULL, OPTION_WARN_ALTERNATE_EM},
     '\0', NULL, N_("Warn if an object has alternate ELF machine code"),
     TWO_DASHES },
@@ -1448,6 +1451,9 @@ parse_args (unsigned argc, char **argv)
 	  break;
 	case OPTION_WARN_SHARED_TEXTREL:
 	  link_info.warn_shared_textrel = TRUE;
+	  break;
+	case OPTION_NO_WARN_SHARED_TEXTREL:
+	  link_info.warn_shared_textrel = FALSE;
 	  break;
 	case OPTION_WARN_ALTERNATE_EM:
 	  link_info.warn_alternate_em = TRUE;

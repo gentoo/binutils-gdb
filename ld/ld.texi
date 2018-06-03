@@ -2408,6 +2408,10 @@ the section (@pxref{SECTIONS}).
 @item --warn-shared-textrel
 Warn if the linker adds a DT_TEXTREL to a shared object.
 
+@kindex --no-warn-shared-textrel
+@item --no-warn-shared-textrel
+Do not warn if the linker adds a DT_TEXTREL to a shared object.
+
 @kindex --warn-alternate-em
 @item --warn-alternate-em
 Warn if an object has alternate ELF machine code.
