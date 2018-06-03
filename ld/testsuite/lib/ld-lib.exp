@@ -230,12 +230,6 @@ proc default_ld_link { ld target objects } {
     # symbol, since the default linker script might use ENTRY.
     regsub -all "(^|\n)(\[^\n\]*: warning: cannot find entry symbol\[^\n\]*\n?)" $exec_output "\\1" exec_output
 
-    # Gentoo tweak:
-    # We want to ignore TEXTREL warnings since we force enable them by default
-    regsub -all "^.*ld-new: warning: creating a DT_TEXTREL in object\.?" $exec_output "\\1" exec_output
-    regsub -all -line "^(\[^\n\]*: warning: relocation\[^\n\]*\n\[^\n\]*: warning: creating a DT_TEXTREL in object\.?\n?)" $exec_output "" exec_output
-
-
     return [string match "" $exec_output]
 }
 
@@ -986,9 +980,6 @@ proc run_dump_test { name {extra_options {}} } {
 	    remote_file build delete "ld.tmp"
 	    set cmdret [lindex $cmdret 0]
 	}
-
-	# Gentoo tweak: We need to kill the textrel warnings here...
-	regsub -all -line "^(\[^\n\]*: warning: relocation\[^\n\]*\n\[^\n\]*: warning: creating a DT_TEXTREL in object\.?\n?)" $comp_output "" comp_output
 
 	regsub "\n$" $comp_output "" comp_output
 	if { $cmdret != 0 || $comp_output != "" || $check_ld(source) != "" } then {
