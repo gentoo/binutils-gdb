@@ -165,7 +165,7 @@ proc default_ld_relocate { ld target objects } {
     global HOSTING_EMU
 
     remote_file host delete $target
-    return [run_host_cmd_yesno "$ld" "$HOSTING_EMU --hash-style=sysv -o $target -r $objects"]
+    return [run_host_cmd_yesno "$ld" "$HOSTING_EMU --hash-style=sysv --no-warn-shared-textrel -o $target -r $objects"]
 }
 
 # Check to see if ld is being invoked with a non-endian output format
@@ -203,9 +203,9 @@ proc default_ld_link { ld target objects } {
     # - .*ld/ld-new    -> we're working with the new linker
     # - otherwise      -> we're likely working with the system compiler
     if {[regexp {ld/ld-new$} $ld]} {
-      set gentoosysv "--hash-style=sysv"
+      set gentoosysv "--hash-style=sysv --no-warn-shared-textrel"
     } else {
-      set gentoosysv "-Wl,--hash-style=sysv"
+      set gentoosysv "-Wl,--hash-style=sysv -Wl,--no-warn-shared-textrel"
     }
 
     remote_file host delete $target
@@ -972,7 +972,7 @@ proc run_dump_test { name {extra_options {}} } {
 
 	# Add -L$srcdir/$subdir so that the linker command can use
 	# linker scripts in the source directory.
-	set cmd "$LD --hash-style=sysv $ld_extra_opt $LDFLAGS -L$srcdir/$subdir \
+	set cmd "$LD --hash-style=sysv --no-warn-shared-textrel $ld_extra_opt $LDFLAGS -L$srcdir/$subdir \
 		   $opts(ld) -o $objfile $objfiles $opts(ld_after_inputfiles)"
 
         # If needed then check for, or add a -Map option.
