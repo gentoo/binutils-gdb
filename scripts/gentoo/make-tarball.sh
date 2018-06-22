@@ -67,6 +67,9 @@ if [[ ! -z "${mytaginfo}" ]] ; then
 else
 	starttag="binutils-${PV//./_}"
 fi
+if [[ "${PV}" == "9999" ]]; then
+	starttag="master"
+fi
 echo "Starting from tag ${starttag}"
 
 mkdir -p tmp/patch
@@ -87,10 +90,12 @@ for myname in 0*.patch ; do
 	mv ${myname} tmp/patch/ || exit 1
 done
 
-# add the extra patch
+# add the extra patch if needed
 
-cp scripts/gentoo/0000-Gentoo-Git-is-development tmp/patch/0000-Gentoo-Git-is-development.patch || exit 1
-cp scripts/gentoo/9999-Gentoo-We-make-a-release tmp/patch/9999-Gentoo-We-make-a-release.patch || exit 1
+if [[ "${PV}" != "9999" ]]; then
+	cp scripts/gentoo/0000-Gentoo-Git-is-development tmp/patch/0000-Gentoo-Git-is-development.patch || exit 1
+	cp scripts/gentoo/9999-Gentoo-We-make-a-release tmp/patch/9999-Gentoo-We-make-a-release.patch || exit 1
+fi
 
 # add a history file
 
