@@ -93,7 +93,7 @@ done
 # add the extra patch if needed
 
 if [[ "${PV}" != "9999" ]]; then
-	cp scripts/gentoo/0000-Gentoo-Git-is-development tmp/patch/0000-Gentoo-Git-is-development.patch || exit 1
+#	cp scripts/gentoo/0000-Gentoo-Git-is-development tmp/patch/0000-Gentoo-Git-is-development.patch || exit 1
 	cp scripts/gentoo/9999-Gentoo-We-make-a-release tmp/patch/9999-Gentoo-We-make-a-release.patch || exit 1
 fi
 
