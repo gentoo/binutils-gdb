@@ -81,6 +81,16 @@ gld${EMULATION_NAME}_before_parse (void)
   input_flags.dynamic = ${DYNAMIC_LINK-true};
   config.has_shared = `if test -n "$GENERATE_SHLIB_SCRIPT" ; then echo true ; else echo false ; fi`;
   config.separate_code = `if test "x${SEPARATE_CODE}" = xyes ; then echo true ; else echo false ; fi`;
+EOF
+
+case ${target} in
+  *-*-linux-* | *-*-k*bsd*-* | *-*-gnu* | *-*-nacl*)
+    fragment <<EOF
+  link_info.new_dtags = true;
+EOF
+    ;;
+esac
+fragment <<EOF
   link_info.check_relocs_after_open_input = true;
 EOF
 if test -n "$COMMONPAGESIZE"; then
