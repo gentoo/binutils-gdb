@@ -1,3 +1,10 @@
+2020-05-01  Alan Modra  <amodra@gmail.com>
+
+	PR 25900
+	* elfnn-riscv.c (_bfd_riscv_relax_section): Check root.type before
+	accessing root.u.def of symbols.  Also check root.u.def.section
+	is non-NULL.  Reverse tests so as to make the logic positive.
+
 2020-04-21  Tamar Christina  <tamar.christina@arm.com>
 
 	Backport from mainline.
