@@ -1,0 +1,22 @@
+certificate version 0.1
+pusher 0x35B17DF5752577CA0C541CEB94BFDF4484AD142F 1588960335 +0300
+pushee git+ssh://git.gentoo.org/fork/binutils-gdb.git
+nonce 1588960335-08cf55baba8adcd455088e25b2a73db8112a3623
+
+4ef60dbc38a84e5311f094df6a2453a64ee45031 f7f16034954c6da78abf5db008b281f0e3406e0f refs/heads/gentoo/binutils-2.34
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEE50NBr50KpJKM5MK59n+4O2olsAAFAl61nE8ACgkQ9n+4O2ol
+sAB7Ig//ec7eeTngtUX32WDr5+8mkfBCSNHuTVztEyiOHRz5ouqIYGwPuuo7f5Hp
+LZDacoGOqHahesc0n1QHoFIgjaD9A6knsZxvvEc0GQdiGzr/nXIP2TqtUJ60ulSY
+cQDV2auWxqvFqMOuVLoRnhPvz2CK+Ays8vpxgbtkVeC4EL+l+6Bn7/yzwrmSIMUO
+ib/OwJ52j8km7YsLnFTZaWP4Bw+dbWgQw2u6+lvd8KbvAbTD0EBfHARVDmwUtmNs
+Q9YonRyquJKFg5tG8Xk/TwTx5d36S/HjgOtPUz0n9K9U2ZbqSNnHnG/CaiDdIcxW
+VWo28UeUUDY8K0tTbu7kohqg6H9xzumBYsWB1LJg6373lvTwvB3FBIv09MalyE7M
+FHEbm3k/eqd6YyVApw+thciggmHEIOG+dED7r7aQfEocT0YM4CngG+/PekNMl0wR
+AeHJL92exyv/6+VvpqDtU6BAAevop8EzJQOiXAKowsJ74L5rY+AtfTcIn801/geK
+2eqlfiyzErQO20WoAnYU2FbCbwyPm5u52Cc3+xp1/C0butqw/rbUrk7HIr73vTpV
+vh5YwlObuO4e82XIzw3Ga8qzk9NBBxTdjl9XwdnpzUOl7bYsZMmrhbwxH2Cns92E
+uJZhRkYpsIEYnX9GSURMKvYIrnJl/uUuuIwMThGuOxb0cw0GC+I=
+=/jMt
+-----END PGP SIGNATURE-----
