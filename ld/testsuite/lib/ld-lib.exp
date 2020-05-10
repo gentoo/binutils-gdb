@@ -200,9 +200,9 @@ proc default_ld_link { ld target objects } {
     # with $ld as parameter. If we want to change the default behaviour, we
     # need to take the different option formats into account.
     # We check the $ld parameter for
-    # - .*ld/ld-new    -> we're working with the new linker
+    # - ld-new         -> we're working with the new linker
     # - otherwise      -> we're likely working with the system compiler
-    if {[regexp {ld/ld-new$} $ld]} {
+    if {[regexp {ld-new$} $ld]} {
       set gentoosysv "--hash-style=sysv --no-warn-shared-textrel"
     } else {
       set gentoosysv "-Wl,--hash-style=sysv -Wl,--no-warn-shared-textrel"
