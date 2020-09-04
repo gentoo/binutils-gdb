@@ -53,6 +53,13 @@
 	* dwarf2.c (read_rnglists): Advance rngs_ptr after
 	_bfd_safe_read_leb128 when parsing DW_RLE_offset_pair.
 
+2020-09-04  Alan Modra  <amodra@gmail.com>
+
+	PR 26574
+	* elfcode.h (elf_object_p): Sanity check section header offset.
+	* elf.c (_bfd_elf_slurp_secondary_reloc_section): Sanity check
+	sh_entsize.
+
 2021-01-01  Alan Modra  <amodra@gmail.com>
 
 	Apply from master
