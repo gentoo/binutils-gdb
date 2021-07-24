@@ -47,7 +47,7 @@ endif
 # a supplement to the soversion. So we need to switch tracks and be creative.
 
 if HAVE_EXTRA_SOVERSION_SUFFIX
-gentoo_ctf_soversion = 0.0.0.$(EXTRA_SOVERSION_SUFFIX)
+gentoo_ctf_soversion = "$(VERSION).$(EXTRA_SOVERSION_SUFFIX)"
 else
 gentoo_ctf_soversion = 0.0.0
 endif
