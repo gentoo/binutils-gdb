@@ -21,6 +21,8 @@ ACLOCAL_AMFLAGS = -I .. -I ../config -I ../bfd
 
 AUTOMAKE_OPTIONS = dejagnu foreign no-texinfo.tex
 
+EXTRA_SOVERSION_SUFFIX = @EXTRA_SOVERSION_SUFFIX@
+
 # This is where we get zlib from.  zlibdir is -L../zlib and zlibinc is
 # -I../zlib, unless we were configured with --with-system-zlib, in which
 # case both are empty.
@@ -41,8 +43,17 @@ include_HEADERS =
 noinst_LTLIBRARIES = libctf.la libctf-nobfd.la
 endif
 
+# libctf by default uses libtool versioning. Unfortunately that keeps us from adding
+# a supplement to the soversion. So we need to switch tracks and be creative.
+
+if HAVE_EXTRA_SOVERSION_SUFFIX
+gentoo_ctf_soversion = 0.0.0.$(EXTRA_SOVERSION_SUFFIX)
+else
+gentoo_ctf_soversion = 0.0.0
+endif
+
 libctf_nobfd_la_LIBADD = @CTF_LIBADD@ $(LIBINTL) $(ZLIB)
-libctf_nobfd_la_LDFLAGS = -version-info 0:0:0 @SHARED_LDFLAGS@ @VERSION_FLAGS@
+libctf_nobfd_la_LDFLAGS = -release $(gentoo_ctf_soversion) @SHARED_LDFLAGS@ @VERSION_FLAGS@
 libctf_nobfd_la_CPPFLAGS = $(AM_CPPFLAGS) -DNOBFD=1
 libctf_nobfd_la_SOURCES = ctf-archive.c ctf-dump.c ctf-create.c ctf-decl.c ctf-error.c \
 			  ctf-hash.c ctf-labels.c ctf-dedup.c ctf-link.c ctf-lookup.c \
