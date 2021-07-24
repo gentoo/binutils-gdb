@@ -82,6 +82,8 @@ AC_ARG_WITH(extra-soversion-suffix,
 AC_SUBST(EXTRA_SOVERSION_SUFFIX)
 AM_CONDITIONAL([HAVE_EXTRA_SOVERSION_SUFFIX], [test -n "${with_extra_soversion_suffix}"])
 
+AC_SUBST(BFD_VERSION, $(${srcdir}/../bfd/configure --version | sed -n -e '1s,.* ,,p'), [Version of the accompanying bfd linker])
+
 # Similar to GDB_AC_CHECK_BFD.
 OLD_CFLAGS=$CFLAGS
 OLD_LDFLAGS=$LDFLAGS
