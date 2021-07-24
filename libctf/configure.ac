@@ -19,7 +19,7 @@ dnl <http://www.gnu.org/licenses/>.
 dnl
 
 AC_PREREQ(2.64)
-AC_INIT([libctf], m4_esyscmd_s([../bfd/configure --version | sed -n -e '1s,.* ,,p']))
+AC_INIT([libctf], 1.2.0)
 AC_CONFIG_SRCDIR(ctf-impl.h)
 AC_CONFIG_MACRO_DIR(..)
 AC_CONFIG_MACRO_DIR(../config)
@@ -84,6 +84,8 @@ AC_ARG_WITH(extra-soversion-suffix,
 [EXTRA_SOVERSION_SUFFIX="${withval}"])
 AC_SUBST(EXTRA_SOVERSION_SUFFIX)
 AM_CONDITIONAL([HAVE_EXTRA_SOVERSION_SUFFIX], [test -n "${with_extra_soversion_suffix}"])
+
+AC_SUBST(BFD_VERSION, $(../bfd/configure --version | sed -n -e '1s,.* ,,p'), [Version of the accompanying bfd linker])
 
 # Similar to GDB_AC_CHECK_BFD.
 OLD_CFLAGS=$CFLAGS

@@ -22,6 +22,7 @@ ACLOCAL_AMFLAGS = -I .. -I ../config -I ../bfd
 AUTOMAKE_OPTIONS = dejagnu foreign no-texinfo.tex
 
 EXTRA_SOVERSION_SUFFIX = @EXTRA_SOVERSION_SUFFIX@
+BFD_VERSION = @BFD_VERSION@
 
 # This is where we get zlib from.  zlibdir is -L../zlib and zlibinc is
 # -I../zlib, unless we were configured with --with-system-zlib, in which
@@ -47,7 +48,7 @@ endif
 # a supplement to the soversion. So we need to switch tracks and be creative.
 
 if HAVE_EXTRA_SOVERSION_SUFFIX
-gentoo_ctf_soversion = "$(VERSION).$(EXTRA_SOVERSION_SUFFIX)"
+gentoo_ctf_soversion = "$(BFD_VERSION).$(EXTRA_SOVERSION_SUFFIX)"
 else
 gentoo_ctf_soversion = 0.0.0
 endif
