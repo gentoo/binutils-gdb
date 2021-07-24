@@ -12923,7 +12923,7 @@ else
 fi
 
 
-BFD_VERSION=$(../bfd/configure --version | sed -n -e '1s,.* ,,p')
+BFD_VERSION=$(${srcdir}/../bfd/configure --version | sed -n -e '1s,.* ,,p')
 
 
 # Similar to GDB_AC_CHECK_BFD.
