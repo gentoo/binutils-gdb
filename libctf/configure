@@ -643,6 +643,7 @@ CTF_LIBADD
 SHARED_LDFLAGS
 NEED_CTF_QSORT_R_FALSE
 NEED_CTF_QSORT_R_TRUE
+BFD_VERSION
 HAVE_EXTRA_SOVERSION_SUFFIX_FALSE
 HAVE_EXTRA_SOVERSION_SUFFIX_TRUE
 EXTRA_SOVERSION_SUFFIX
@@ -11592,7 +11593,7 @@ else
   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
   lt_status=$lt_dlunknown
   cat > conftest.$ac_ext <<_LT_EOF
-#line 11607 "configure"
+#line 11608 "configure"
 #include "confdefs.h"
 
 #if HAVE_DLFCN_H
@@ -11698,7 +11699,7 @@ else
   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
   lt_status=$lt_dlunknown
   cat > conftest.$ac_ext <<_LT_EOF
-#line 11713 "configure"
+#line 11714 "configure"
 #include "confdefs.h"
 
 #if HAVE_DLFCN_H
@@ -12920,6 +12921,9 @@ else
   HAVE_EXTRA_SOVERSION_SUFFIX_TRUE='#'
   HAVE_EXTRA_SOVERSION_SUFFIX_FALSE=
 fi
+
+
+BFD_VERSION=$(${srcdir}/../bfd/configure --version | sed -n -e '1s,.* ,,p')
 
 
 # Similar to GDB_AC_CHECK_BFD.
