@@ -13734,6 +13734,7 @@ else
   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
 /* end confdefs.h.  */
 #include <assert.h>
+#include <string.h>
 #include <stdio.h>
 int
 main ()
