@@ -2355,7 +2355,9 @@ For a linker for a Linux system, if the file @file{/etc/ld.so.conf}
 exists, the list of directories found in that file.  Note: the path
 to this file is prefixed with the @code{sysroot} value, if that is
 defined, and then any @code{prefix} string if the linker was
-configured with the @command{--prefix=<path>} option.
+configured with the @command{--prefix=<path>} option. This has feature has
+been disabled on Gentoo Linux to make it consistent with the other
+linkers, which do not do this.
 @item
 For a native linker on a FreeBSD system, any directories specified by
 the @code{_PATH_ELF_HINTS} macro defined in the @file{elf-hints.h}

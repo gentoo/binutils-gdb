@@ -1156,10 +1156,6 @@ ldelf_handle_dt_needed (struct elf_link_hash_table *htab,
 	      if (is_freebsd
 		  && ldelf_check_ld_elf_hints (l, force, elfsize))
 		break;
-
-	      if (is_linux
-		  && ldelf_check_ld_so_conf (l, force, elfsize, prefix))
-		break;
 	    }
 
 	  len = strlen (l->name);
