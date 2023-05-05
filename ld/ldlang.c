@@ -676,6 +676,19 @@ output_section_callback_sort (lang_wild_statement_type *ptr,
   if (unique_section_p (section, os))
     return;
 
+  /* Don't add sections to the tree when we already know that
+     lang_add_section won't do anything with it.  */
+  if (section->output_section != NULL)
+    {
+      if (!link_info.non_contiguous_regions)
+       return;
+
+      /* SECTION has already been handled in a special way
+        (eg. LINK_ONCE): skip it.  */
+      if (bfd_is_abs_section (section->output_section))
+       return;
+    }
+
   node = (lang_section_bst_type *) xmalloc (sizeof (lang_section_bst_type));
   node->left = 0;
   node->right = 0;
