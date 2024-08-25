@@ -142,7 +142,7 @@ gld${EMULATION_NAME}_before_plugin_all_symbols_read (void)
   ldelf_before_plugin_all_symbols_read ($IS_LIBPATH, $IS_NATIVE,
 				        $IS_LINUX_TARGET,
 					$IS_FREEBSD_TARGET,
-					$ELFSIZE, "$prefix");
+					$ELFSIZE, "${gentoo_prefix-${prefix}}");
 }
 
 /* This is called after all the input files have been opened.  */
@@ -151,7 +151,7 @@ static void
 gld${EMULATION_NAME}_after_open (void)
 {
   ldelf_after_open ($IS_LIBPATH, $IS_NATIVE,
-		    $IS_LINUX_TARGET, $IS_FREEBSD_TARGET, $ELFSIZE, "$prefix");
+		    $IS_LINUX_TARGET, $IS_FREEBSD_TARGET, $ELFSIZE, "${gentoo_prefix-${prefix}}");
 }
 
 EOF
