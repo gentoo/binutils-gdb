@@ -1093,8 +1093,8 @@ ldelf_handle_dt_needed (struct elf_link_hash_table *htab,
 	 linker will search.  That means that we want to use
 	 rpath_link, rpath, then the environment variable
 	 LD_LIBRARY_PATH (native only), then the DT_RPATH/DT_RUNPATH
-	 entries (native only), then the linker script LIB_SEARCH_DIRS.
-	 We do not search using the -L arguments.
+	 entries (native only), then the linker script LIB_SEARCH_DIRS,
+	 then the -L arguments.
 
 	 We search twice.  The first time, we skip objects which may
 	 introduce version mismatches.  The second time, we force
@@ -1168,11 +1168,7 @@ ldelf_handle_dt_needed (struct elf_link_hash_table *htab,
 	  len = strlen (l->name);
 	  for (search = search_head; search != NULL; search = search->next)
 	    {
-	      char *filename;
-
-	      if (search->source != search_dir_linker_script)
-		continue;
-	      filename = (char *) xmalloc (strlen (search->name) + len + 2);
+	      char *filename = (char *) xmalloc (strlen (search->name) + len + 2);
 	      sprintf (filename, "%s/%s", search->name, l->name);
 	      nn.name = filename;
 	      if (ldelf_try_needed (&nn, force, is_linux))
