@@ -33,6 +33,9 @@ if ![check_shared_lib_support] {
     return 0
 }
 
+set old_CFLAGS "$CFLAGS_FOR_TARGET"
+append CFLAGS_FOR_TARGET " $NOLTO_CFLAGS"
+
 if {[info exists env(LC_ALL)]} {
     set old_lc_all $env(LC_ALL)
 }
@@ -55,3 +58,5 @@ if {[info exists old_lc_all]} {
 } else {
     unset env(LC_ALL)
 }
+
+set CFLAGS_FOR_TARGET "$old_CFLAGS"

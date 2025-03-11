@@ -99,6 +99,16 @@ proc compile_link_one_host_cc { src output additional_args } {
     return [run_native_host_cmd "./libtool --quiet --tag=CC --mode=link $CC $CFLAGS $src -o $output $additional_args" ]
 }
 
+# Also prune lto-wrapper warnings, like
+# lto-wrapper: warning: using serial compilation of 16 LTRANS jobs
+# lto-wrapper: note: see the '-flto' option documentation for more information
+#
+proc prune_warnings_lto { msg } {
+    set msgx "lto-wrapper: (?:warning\:\[^\n\r\]+|note\:\[^\n\r\]+)"
+    regsub -all "$msgx\[\n\r\]*" $msg {} msg
+    return [prune_warnings $msg]
+}
+
 # run_lookup_test FILE
 #
 # Compile with the host compiler and link a .c file into a "lookup" binary, then
@@ -253,7 +263,7 @@ proc run_lookup_test { name } {
     set testname $file4log
 
     # Compile and link the lookup program.
-    set comp_output [prune_warnings [compile_link_one_host_cc $opts(lookup) "tmpdir/lookup" "libctf.la $opts(lookup_link)"]]
+    set comp_output [prune_warnings_lto [compile_link_one_host_cc $opts(lookup) "tmpdir/lookup" "libctf.la $opts(lookup_link)"]]
 
     if { $comp_output != ""} {
 	send_log "compilation of lookup program $opts(lookup) failed with <$comp_output>"
@@ -289,7 +299,7 @@ proc run_lookup_test { name } {
 	    }
 	}
 
-	set comp_output [prune_warnings [run_host_cmd "$CC_FOR_TARGET" "$CFLAGS_FOR_TARGET $lookup_flags [concat $src] -o $lookup_output"]]
+	set comp_output [prune_warnings_lto [run_host_cmd "$CC_FOR_TARGET" "$CFLAGS_FOR_TARGET $lookup_flags [concat $src] -o $lookup_output"]]
 
 	if { $comp_output != ""} {
 	    send_log "compilation of CTF program [concat $src] failed with <$comp_output>"
