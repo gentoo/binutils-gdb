@@ -1,0 +1,16 @@
+certificate version 0.1
+pusher Sam James <sam@gentoo.org> 1786145563 +0100
+pushee git+ssh://git.gentoo.org/fork/binutils-gdb.git
+nonce 1786145563-2435e9277a3f84cc6efd1b97413b5c2c650bc284
+
+115e7113c3faf35fb29b77cf46ce1c3c84273ef3 ed260b2013c32a7f508308020bfa18330542df9b refs/tags/gentoo/binutils-2.47-1
+-----BEGIN PGP SIGNATURE-----
+
+iQEBBAAWCgCpFiEEJaa7iN2bdkxrVUHCc4QJ9SDfkZAFAmp2axsbFIAAAAAABAAO
+bWFudTIsMi41KzEuMTIsMiwyXxSAAAAAAC4AKGlzc3Vlci1mcHJAbm90YXRpb25z
+Lm9wZW5wZ3AuZmlmdGhob3JzZW1hbi5uZXQyNUE2QkI4OEREOUI3NjRDNkI1NTQx
+QzI3Mzg0MDlGNTIwREY5MTkwDxxzYW1AZ2VudG9vLm9yZwAKCRBzhAn1IN+RkK/+
+APwJ9HhCyBRIyQu1l6AJNflIGcDYPVfaN0JXq/OvdGDYrAEApZYjVwpmIOzFOWYP
+gKcm/3SUWl+Jm/uoWHjvrBsWGwI=
+=TWtg
+-----END PGP SIGNATURE-----
